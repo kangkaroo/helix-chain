@@ -1,8 +1,5 @@
 1. 创建项目结构
    首先，创建项目文件夹并设置基本结构：
-
-go
-复制代码
 consortium-blockchain/
 │
 ├── main.go                // 主入口
@@ -36,3 +33,4 @@ consortium-blockchain/
 │
 └── ui/                    // 用户界面模块
 └── web.go             // 用户界面实现
+
