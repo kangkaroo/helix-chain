@@ -1,22 +1,16 @@
 package storage
 
-type Block struct {
-	Index     int
-	Timestamp string
-	Data      string
-	PrevHash  string
+// BlockChain 表示一个简单的区块链结构
+type BlockChain struct {
+	Blocks []*Block // 用于存储区块链中区块的切片
 }
 
-type Blockchain struct {
-	Blocks []Block
-}
-
-// 初始化区块链
-func InitBlockchain() *Blockchain {
-	return &Blockchain{Blocks: []Block{{Index: 0}}}
-}
-
-// 添加区块
-func (bc *Blockchain) AddBlock(data string) {
-	// 实现区块添加逻辑
+// AddBlock 向区块链添加一个包含指定数据的新区块
+func (blockChain *BlockChain) AddBlock(data []byte) {
+	// 获取区块链中的最后一个区块
+	prevBlock := blockChain.Blocks[len(blockChain.Blocks)-1]
+	// 使用上一个区块的哈希和高度 + 1 创建一个新区块
+	newBlock := NewBlock(prevBlock.Height+1, prevBlock.Hash, data)
+	// 将新区块添加到区块链中
+	blockChain.Blocks = append(blockChain.Blocks, newBlock)
 }
